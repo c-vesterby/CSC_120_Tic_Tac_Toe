@@ -18,13 +18,13 @@ def print_board(board):
     for row in board:
             print(row)
 
-def player_input(board, player_id, row, column):
+def player_input(board, row, column, player_id):
     if player_id == 1:
-        input(board, row, column, "X") 
+        add_mark(board, row, column, "X") 
     else: 
-        input(board, row, column, "O")
+        add_mark(board, row, column, "O")
 
-def input(board, row, column, mark):
+def add_mark(board, row, column, mark):
     if check_size(board, row):
         if check_size(board[row], column):
             if not check_mark(board, row, column):
@@ -45,28 +45,16 @@ def check_size(line, value):
 def check_mark(board, row, column):
     return board[row][column] != "-"
 
-
-
-# def place_mark():
-#     if player_id:
-#         input(rows, colums)
-#         print(new_board)
-
-#     else: 
-#         print("Please enter a row and column.")
-
-# def check_mark():
-#     if input in board != "-":
-#         return True
-#         print(new_board)
-#     else:
-#         return False
-#         print("Another player has already taken that space. Please choose again.")
-
 def tic_tac_toe():
     board = new_board()
     print("Welcome to Tic Tac Toe")
     print_board(board)
+    print("Player 1 place your X")
+    row = int(input("Enter row: "))
+    column = int(input("Enter column: "))
+    player_input(board, row, column, 1)
+    print_board(board)
+
 
 tic_tac_toe()     
 
